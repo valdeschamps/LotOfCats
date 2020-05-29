@@ -1,8 +1,8 @@
-package com.example.lotofcats
+package com.example.lotofcats.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.lotofcats.ui.main.MainFragment
+import com.example.lotofcats.R
 
 class MainActivity : AppCompatActivity() {
 

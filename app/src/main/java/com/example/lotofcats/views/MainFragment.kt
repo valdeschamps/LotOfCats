@@ -1,4 +1,4 @@
-package com.example.lotofcats.ui.main
+package com.example.lotofcats.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.lotofcats.R
+import com.example.lotofcats.viewmodels.MainViewModel
 
 class MainFragment : Fragment() {
 

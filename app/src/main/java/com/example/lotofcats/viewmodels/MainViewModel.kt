@@ -1,4 +1,4 @@
-package com.example.lotofcats.ui.main
+package com.example.lotofcats.viewmodels
 
 import androidx.lifecycle.ViewModel
 
