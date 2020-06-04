@@ -5,13 +5,14 @@ import com.example.lotofcats.model.Cat
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Query
 
 interface Webservice {
-    @GET("v1/images/search?limit=5&page=0&order=Desc")
+    @GET("v1/images/search")
     fun getData(
-        /*@Query("limit") limit: String = "1",
-        @Query("page") page: String = "0",
-        @Query("page") order: String = "DESC",*/
+        @Query("limit") limit: String,
+        @Query("page") page: String,
+        @Query("page") order: String,
         @Header("x-api-key") apikey: String = BuildConfig.APIKEY
     ): Call<List<Cat>>
 }
