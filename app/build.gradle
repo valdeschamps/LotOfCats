@@ -56,4 +56,10 @@ dependencies {
 
     //koin
     implementation "org.koin:koin-android:2.1.5"
+
+    //recyclerview
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+
+    //cardview
+    implementation 'androidx.cardview:cardview:1.0.0'
 }
