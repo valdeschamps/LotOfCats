@@ -17,21 +17,24 @@ class Repository {
         .build()
 
     private val service: Webservice = retrofit.create(Webservice::class.java)
+    var mutableLiveData: MutableLiveData<ArrayList<Cat>> = MutableLiveData()
 
-    fun getData(catLimit: Int, pageNumber: Int, sortBy: String): LiveData<List<Cat>> {
-        val data = MutableLiveData<List<Cat>>()
+    fun getData(catLimit: Int, pageNumber: Int, sortBy: String): LiveData<ArrayList<Cat>> {
+        MutableLiveData<List<Cat>>()
         service.getData(catLimit.toString(), pageNumber.toString(), sortBy)
             .enqueue(object : Callback<List<Cat>> {
                 override fun onResponse(call: Call<List<Cat>>, response: Response<List<Cat>>) {
-                    Log.d("test", response.toString())
-                    data.value = response.body()
+                    val result: ArrayList<Cat> = (mutableLiveData.value) ?: ArrayList()
+                    response.body()?.forEach {
+                        result.add(it)
+                    }
+                    mutableLiveData.value = result
                 }
 
                 override fun onFailure(call: Call<List<Cat>>, t: Throwable) {
-                    Log.d("test", "fail")
-                    Log.d("test", "${t.message}")
+                    //todo
                 }
             })
-        return data
+        return mutableLiveData
     }
 }

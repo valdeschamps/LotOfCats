@@ -12,9 +12,12 @@ class MainViewModel : ViewModel(), KoinComponent {
         val SORT_ORDER_DESC = "DESC"
     }
 
-    private val repo : Repository by inject()
-    private var catLimit = 5
+    private val repo: Repository by inject()
+    private var catLimit = 8
     private var pageNumber = 0
 
-    val string: LiveData<List<Cat>> = repo.getData(catLimit, pageNumber, SORT_ORDER_DESC)
+    fun fetchData(): LiveData<ArrayList<Cat>> {
+        pageNumber += 1
+        return repo.getData(catLimit, pageNumber, SORT_ORDER_DESC)
+    }
 }
