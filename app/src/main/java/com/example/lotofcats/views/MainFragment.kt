@@ -22,6 +22,7 @@ class MainFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels()
     private val recyclerAdapter: CatAdapter by lazy { CatAdapter() }
     private var dataSize = 0
+    private var isLoading = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,22 +41,31 @@ class MainFragment : Fragment() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                     val gridManager = recyclerView.layoutManager as GridLayoutManager
-                    if (gridManager.findLastVisibleItemPosition() == dataSize-1
+                    if (gridManager.findLastVisibleItemPosition() == dataSize - 1
                     ) {
                         loadMoreData()
                     }
                 }
             })
         }
+
+        viewModel.catList.observe(viewLifecycleOwner) {
+            dataSize = it.size
+            recyclerAdapter.setData(ArrayList(it))
+            recyclerAdapter.notifyItemRangeInserted(
+                dataSize - viewModel.catLimit,
+                viewModel.catLimit
+            )
+            isLoading = false
+        }
+
         loadMoreData()
     }
 
-    private fun loadMoreData(){
-        viewModel.fetchData().observe(viewLifecycleOwner){
-            dataSize = it.size
-            recyclerAdapter.setData(ArrayList(it))
-            recyclerAdapter.notifyDataSetChanged()
-            //todo maybe use other notify
+    private fun loadMoreData() {
+        if (!isLoading) {
+            isLoading = true
+            viewModel.fetchData()
         }
     }
 }

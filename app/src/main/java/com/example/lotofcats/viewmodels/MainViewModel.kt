@@ -1,6 +1,6 @@
 package com.example.lotofcats.viewmodels
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.lotofcats.model.Cat
 import com.example.lotofcats.repositories.Repository
@@ -13,11 +13,12 @@ class MainViewModel : ViewModel(), KoinComponent {
     }
 
     private val repo: Repository by inject()
-    private var catLimit = 8
+    var catLimit = 10
     private var pageNumber = 0
+    var catList: MutableLiveData<ArrayList<Cat>> = repo.mutableLiveData
 
-    fun fetchData(): LiveData<ArrayList<Cat>> {
+    fun fetchData() {
         pageNumber += 1
-        return repo.getData(catLimit, pageNumber, SORT_ORDER_DESC)
+        repo.getData(catLimit, pageNumber, SORT_ORDER_DESC)
     }
 }
