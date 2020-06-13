@@ -15,10 +15,6 @@ import com.example.lotofcats.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
-    companion object {
-        fun newInstance() = MainFragment()
-    }
-
     private val viewModel: MainViewModel by viewModels()
     private val recyclerAdapter: CatAdapter by lazy { CatAdapter() }
     private var dataSize = 0
