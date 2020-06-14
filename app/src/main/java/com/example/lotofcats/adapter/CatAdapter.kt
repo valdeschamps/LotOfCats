@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.lotofcats.R
 import com.example.lotofcats.model.Cat
 import com.example.lotofcats.views.MainFragment
@@ -20,14 +22,16 @@ class CatAdapter() :
 
         init {
             itemView.imageView.setOnClickListener {view ->
-                val action = MainFragmentDirections.actionMainFragmentToImageFragment()
+                val url = cat.url
+                val action = MainFragmentDirections.actionMainFragmentToImageFragment(url)
                 view.findNavController().navigate(action)
             }
         }
 
         fun displayData(newCat: Cat) {
             cat = newCat
-            Glide.with(itemView).load(cat.url).into(itemView.imageView)
+            val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
+            Glide.with(itemView).load(cat.url).apply(requestOptions).into(itemView.imageView)
         }
     }
 

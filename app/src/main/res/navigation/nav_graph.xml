@@ -18,5 +18,9 @@
         android:id="@+id/imageFragment"
         android:name="com.example.lotofcats.views.ImageFragment"
         android:label="fragment_image"
-        tools:layout="@layout/fragment_image" />
+        tools:layout="@layout/fragment_image" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
 </navigation>
