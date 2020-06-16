@@ -3,35 +3,34 @@ package com.example.lotofcats.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.lotofcats.R
 import com.example.lotofcats.model.Cat
-import com.example.lotofcats.views.MainFragment
 import com.example.lotofcats.views.MainFragmentDirections
 import kotlinx.android.synthetic.main.card.view.*
 
-class CatAdapter() :
-    RecyclerView.Adapter<CatAdapter.CatViewHolder>() {
-    inner class CatViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-        private var cat = Cat()
-
-        init {
-            itemView.imageView.setOnClickListener {view ->
-                val url = cat.url
-                val action = MainFragmentDirections.actionMainFragmentToImageFragment(url)
-                view.findNavController().navigate(action)
-            }
-        }
-
+class CatAdapter : RecyclerView.Adapter<CatAdapter.CatViewHolder>() {
+    inner class CatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun displayData(newCat: Cat) {
-            cat = newCat
+            ViewCompat.setTransitionName(itemView.imageView, newCat.url)
+
+            itemView.imageView.setOnClickListener { view ->
+                val url = newCat.url
+                val extra = FragmentNavigatorExtras(
+                    itemView.imageView to url
+                )
+                val action = MainFragmentDirections.actionMainFragmentToImageFragment(url)
+                view.findNavController().navigate(action, extra)
+            }
+
             val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
-            Glide.with(itemView).load(cat.url).apply(requestOptions).into(itemView.imageView)
+            Glide.with(itemView).load(newCat.url).apply(requestOptions).into(itemView.imageView)
         }
     }
 
