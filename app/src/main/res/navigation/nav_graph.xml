@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.lotofcats.views.MainFragment"
-        android:label="main_fragment"
-        tools:layout="@layout/main_fragment" >
+        android:label="@string/fragment_main_title"
+        tools:layout="@layout/main_fragment">
         <action
             android:id="@+id/action_mainFragment_to_imageFragment"
             app:destination="@id/imageFragment"
@@ -21,8 +21,8 @@
     <fragment
         android:id="@+id/imageFragment"
         android:name="com.example.lotofcats.views.ImageFragment"
-        android:label="fragment_image"
-        tools:layout="@layout/fragment_image" >
+        android:label="@string/fragment_image_title"
+        tools:layout="@layout/fragment_image">
         <argument
             android:name="url"
             app:argType="string" />

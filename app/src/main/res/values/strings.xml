@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LotOfCats</string>
+    <string name="fragment_main_title">Cat list</string>
+    <string name="fragment_image_title">Cat</string>
 </resources>
