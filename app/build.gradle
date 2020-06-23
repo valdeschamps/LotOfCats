@@ -10,6 +10,7 @@ apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
+    archivesBaseName = "LotOfCats"
 
     defaultConfig {
         applicationId "com.example.lotofcats"
