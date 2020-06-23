@@ -8,6 +8,7 @@ data class Cat(
     //val categories: Array<Categories> = Array(5){ Categories() },
     //val breeds: Array<Breeds> = Array(5){Breeds()}
 )
+/*
 
 data class Categories(
     val id: Int = 0,
@@ -44,3 +45,4 @@ data class Breeds(
     val stranger_friendly: Int = 0,
     val vocalisation: Int = 0
 )
+*/
