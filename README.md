@@ -25,3 +25,7 @@ Built following the MVVM patern
 ## Screenshots
 
 <img src="screenshots/Screenshot_1592575681.png" width="256"><img src="screenshots/Screenshot_1592575690.png" width="256">
+
+## Apk
+
+Fichier apk de l'app [ici](https://github.com/valdeschamps/LotOfCats/tree/master/app/build/outputs/apk/release)
