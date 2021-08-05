@@ -6,17 +6,20 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.lotofcats.R
-import kotlinx.android.synthetic.main.main_activity.*
+import com.example.lotofcats.databinding.MainActivityBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding:MainActivityBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+        binding = MainActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         findNavController(R.id.nav_host_fragment).setGraph(R.navigation.nav_graph)
         val appBarConfiguration = AppBarConfiguration(findNavController(R.id.nav_host_fragment).graph)
-        toolbar.setupWithNavController(findNavController(R.id.nav_host_fragment), appBarConfiguration)
+        binding.toolbar.setupWithNavController(findNavController(R.id.nav_host_fragment), appBarConfiguration)
     }
 }

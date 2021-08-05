@@ -10,12 +10,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.lotofcats.R
 import com.example.lotofcats.adapter.CatAdapter
+import com.example.lotofcats.databinding.MainFragmentBinding
 import com.example.lotofcats.viewmodels.MainViewModel
-import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
+    private var _binding: MainFragmentBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: MainViewModel by viewModels()
     private val recyclerAdapter: CatAdapter by lazy { CatAdapter() }
     private var dataSize = 0
@@ -25,13 +26,14 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        _binding = MainFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         postponeEnterTransition()
-        recyclerViewMain.apply {
+        binding.recyclerViewMain.apply {
             layoutManager = GridLayoutManager(context, 2)
             adapter = recyclerAdapter
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -67,5 +69,10 @@ class MainFragment : Fragment() {
             isLoading = true
             viewModel.fetchData()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

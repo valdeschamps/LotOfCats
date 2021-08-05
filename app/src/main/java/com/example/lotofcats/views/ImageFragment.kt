@@ -16,10 +16,11 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
-import com.example.lotofcats.R
-import kotlinx.android.synthetic.main.fragment_image.*
+import com.example.lotofcats.databinding.FragmentImageBinding
 
 class ImageFragment : Fragment() {
+    private var _binding: FragmentImageBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +31,12 @@ class ImageFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_image, container, false)
+    ): View {
+        _binding = FragmentImageBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,7 +44,7 @@ class ImageFragment : Fragment() {
         val args: ImageFragmentArgs by navArgs()
         val url = args.url
 
-        ViewCompat.setTransitionName(imageView, url)
+        ViewCompat.setTransitionName(binding.imageView, url)
 
         val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
         Glide.with(this)
@@ -69,6 +72,11 @@ class ImageFragment : Fragment() {
                     return false
                 }
             })
-            .into(imageView)
+            .into(binding.imageView)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

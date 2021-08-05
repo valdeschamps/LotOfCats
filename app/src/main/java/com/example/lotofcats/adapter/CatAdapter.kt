@@ -11,26 +11,27 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.lotofcats.R
+import com.example.lotofcats.databinding.CardBinding
 import com.example.lotofcats.model.Cat
 import com.example.lotofcats.views.MainFragmentDirections
-import kotlinx.android.synthetic.main.card.view.*
 
 class CatAdapter : RecyclerView.Adapter<CatAdapter.CatViewHolder>() {
     inner class CatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val binding = CardBinding.bind(itemView)
         fun displayData(newCat: Cat) {
-            ViewCompat.setTransitionName(itemView.imageView, newCat.url)
+            ViewCompat.setTransitionName(binding.imageView, newCat.url)
 
-            itemView.imageView.setOnClickListener { view ->
+            binding.imageView.setOnClickListener { view ->
                 val url = newCat.url
                 val extra = FragmentNavigatorExtras(
-                    itemView.imageView to url
+                    binding.imageView to url
                 )
                 val action = MainFragmentDirections.actionMainFragmentToImageFragment(url)
                 view.findNavController().navigate(action, extra)
             }
 
             val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
-            Glide.with(itemView).load(newCat.url).apply(requestOptions).into(itemView.imageView)
+            Glide.with(itemView).load(newCat.url).apply(requestOptions).into(binding.imageView)
         }
     }
 
