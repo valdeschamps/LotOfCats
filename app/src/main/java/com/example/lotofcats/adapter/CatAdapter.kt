@@ -31,7 +31,7 @@ class CatAdapter : RecyclerView.Adapter<CatAdapter.CatViewHolder>() {
             }
 
             val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
-            Glide.with(itemView).load(newCat.url).apply(requestOptions).into(binding.imageView)
+            Glide.with(itemView).load(newCat.url).placeholder(R.drawable.ic_circle_foreground).apply(requestOptions).into(binding.imageView)
         }
     }
 
