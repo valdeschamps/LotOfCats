@@ -1,6 +1,5 @@
 package com.example.lotofcats.repositories
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.lotofcats.model.Cat
@@ -19,9 +18,9 @@ class Repository {
     private val service: Webservice = retrofit.create(Webservice::class.java)
     var mutableLiveData: MutableLiveData<ArrayList<Cat>> = MutableLiveData()
 
-    fun getData(catLimit: Int, pageNumber: Int, sortBy: String): LiveData<ArrayList<Cat>> {
+    fun getData(catLimit: Int): LiveData<ArrayList<Cat>> {
         MutableLiveData<List<Cat>>()
-        service.getData(catLimit.toString(), pageNumber.toString(), sortBy)
+        service.getData(limit = catLimit.toString())
             .enqueue(object : Callback<List<Cat>> {
                 override fun onResponse(call: Call<List<Cat>>, response: Response<List<Cat>>) {
                     val result: ArrayList<Cat> = (mutableLiveData.value) ?: ArrayList()

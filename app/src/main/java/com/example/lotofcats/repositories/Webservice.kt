@@ -8,11 +8,10 @@ import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface Webservice {
+    //get a number of pictures equal to limit
     @GET("v1/images/search")
     fun getData(
         @Query("limit") limit: String,
-        @Query("page") page: String,
-        @Query("page") order: String,
         @Header("x-api-key") apikey: String = BuildConfig.APIKEY
     ): Call<List<Cat>>
 }

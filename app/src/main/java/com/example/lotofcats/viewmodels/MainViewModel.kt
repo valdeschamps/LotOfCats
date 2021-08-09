@@ -8,10 +8,6 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 class MainViewModel : ViewModel(), KoinComponent {
-    companion object {
-        val SORT_ORDER_DESC = "DESC"
-    }
-
     private val repo: Repository by inject()
     var catLimit = 10
     private var pageNumber = 0
@@ -19,6 +15,6 @@ class MainViewModel : ViewModel(), KoinComponent {
 
     fun fetchData() {
         pageNumber += 1
-        repo.getData(catLimit, pageNumber, SORT_ORDER_DESC)
+        repo.getData(catLimit)
     }
 }
