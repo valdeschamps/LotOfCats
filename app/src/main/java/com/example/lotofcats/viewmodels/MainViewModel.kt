@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.lotofcats.model.Cat
 import com.example.lotofcats.repositories.Repository
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class MainViewModel : ViewModel(), KoinComponent {
     companion object {
