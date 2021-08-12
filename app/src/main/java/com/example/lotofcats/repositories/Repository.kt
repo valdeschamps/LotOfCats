@@ -1,11 +1,10 @@
 package com.example.lotofcats.repositories
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.lotofcats.model.Cat
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -17,23 +16,20 @@ class Repository {
 
     private val service: Webservice = retrofit.create(Webservice::class.java)
     var mutableLiveData: MutableLiveData<ArrayList<Cat>> = MutableLiveData()
+    private val mainDispatcher: CoroutineDispatcher = Dispatchers.Main
 
-    fun getData(catLimit: Int): LiveData<ArrayList<Cat>> {
-        MutableLiveData<List<Cat>>()
-        service.getData(limit = catLimit.toString())
-            .enqueue(object : Callback<List<Cat>> {
-                override fun onResponse(call: Call<List<Cat>>, response: Response<List<Cat>>) {
-                    val result: ArrayList<Cat> = (mutableLiveData.value) ?: ArrayList()
-                    response.body()?.forEach {
-                        result.add(it)
-                    }
-                    mutableLiveData.value = result
+    suspend fun getData(catLimit: Int){
+        val response = service.getData(limit = catLimit.toString())
+        withContext(mainDispatcher){
+            if(response.isSuccessful){
+                val result: ArrayList<Cat> = (mutableLiveData.value) ?: ArrayList()
+                response.body()?.forEach {
+                    result.add(it)
                 }
-
-                override fun onFailure(call: Call<List<Cat>>, t: Throwable) {
-                    //todo
-                }
-            })
-        return mutableLiveData
+                mutableLiveData.value = result
+            }else{
+                //todo notify viewmodel with response.message()
+            }
+        }
     }
 }
