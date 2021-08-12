@@ -16,6 +16,7 @@ class MainViewModel : ViewModel(), KoinComponent {
     var catLimit = 10
     var catList: MutableLiveData<ArrayList<Cat>> = repo.mutableLiveData
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+    var errorMessage: MutableLiveData<String> = repo.errorMessage
 
     fun fetchData() {
         viewModelScope.launch(ioDispatcher){

@@ -17,6 +17,7 @@ class Repository {
     private val service: Webservice = retrofit.create(Webservice::class.java)
     var mutableLiveData: MutableLiveData<ArrayList<Cat>> = MutableLiveData()
     private val mainDispatcher: CoroutineDispatcher = Dispatchers.Main
+    var errorMessage: MutableLiveData<String> = MutableLiveData<String>("")
 
     suspend fun getData(catLimit: Int){
         val response = service.getData(limit = catLimit.toString())
@@ -28,7 +29,7 @@ class Repository {
                 }
                 mutableLiveData.value = result
             }else{
-                //todo notify viewmodel with response.message()
+                errorMessage.value = response.message()
             }
         }
     }
