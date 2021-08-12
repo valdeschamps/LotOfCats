@@ -53,21 +53,19 @@ class MainFragment : Fragment() {
             }
         }
 
-        viewModel.catList.observe(viewLifecycleOwner) {
-            dataSize = it.size
-            recyclerAdapter.setData(ArrayList(it))
+        viewModel.catList.observe(viewLifecycleOwner, Observer  {catList ->
+            dataSize = catList.size
+            recyclerAdapter.setData(ArrayList(catList))
             recyclerAdapter.notifyItemRangeInserted(
                 dataSize - viewModel.catLimit,
                 viewModel.catLimit
             )
             isLoading = false
-        }
+        })
 
-        val observer = Observer<String> { _ ->
-            Toast.makeText(context, viewModel.errorMessage.value, Toast.LENGTH_SHORT).show()
-        }
-
-        viewModel.errorMessage.observe(viewLifecycleOwner, observer)
+        viewModel.errorMessage.observe(viewLifecycleOwner, Observer { message ->
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        })
 
         loadMoreData()
     }
