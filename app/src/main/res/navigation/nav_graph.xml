@@ -22,7 +22,7 @@
         android:id="@+id/imageFragment"
         android:name="com.example.lotofcats.views.ImageFragment"
         android:label="@string/fragment_image_title"
-        tools:layout="@layout/fragment_image">
+        tools:layout="@layout/image_fragment">
         <argument
             android:name="url"
             app:argType="string" />

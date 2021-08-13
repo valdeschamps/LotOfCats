@@ -16,10 +16,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
-import com.example.lotofcats.databinding.FragmentImageBinding
+import com.example.lotofcats.databinding.ImageFragmentBinding
 
 class ImageFragment : Fragment() {
-    private var _binding: FragmentImageBinding? = null
+    private var _binding: ImageFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +35,7 @@ class ImageFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentImageBinding.inflate(inflater, container, false)
+        _binding = ImageFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
