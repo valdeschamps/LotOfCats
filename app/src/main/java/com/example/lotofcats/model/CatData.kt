@@ -4,11 +4,10 @@ import kotlin.String
 
 data class Cat(
     val id: String = "",
-    val url: String = ""
-    //val categories: Array<Categories> = Array(5){ Categories() },
-    //val breeds: Array<Breeds> = Array(5){Breeds()}
+    val url: String = "",
+    val categories: List<Categories> = listOf(),
+    val breeds: List<Breeds> = listOf()
 )
-/*
 
 data class Categories(
     val id: Int = 0,
@@ -45,4 +44,3 @@ data class Breeds(
     val stranger_friendly: Int = 0,
     val vocalisation: Int = 0
 )
-*/
