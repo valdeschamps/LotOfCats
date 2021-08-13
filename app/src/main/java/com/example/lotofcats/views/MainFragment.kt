@@ -64,7 +64,7 @@ class MainFragment : Fragment() {
         })
 
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer { message ->
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            if(message.isNotBlank()){Toast.makeText(context, message, Toast.LENGTH_SHORT).show()}
         })
 
         loadMoreData()
