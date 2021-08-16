@@ -53,11 +53,8 @@ class CatAdapter : RecyclerView.Adapter<CatAdapter.CatViewHolder>() {
 
             binding.imageView.setOnClickListener { view ->
                 if(isLoaded) {
-                    val url = newCat.url
-                    val extra = FragmentNavigatorExtras(
-                        binding.imageView to url
-                    )
-                    val action = MainFragmentDirections.actionMainFragmentToImageFragment(url, newCat)
+                    val extra = FragmentNavigatorExtras(binding.imageView to newCat.url)
+                    val action = MainFragmentDirections.actionMainFragmentToImageFragment(newCat)
                     view.findNavController().navigate(action, extra)
                 }
             }

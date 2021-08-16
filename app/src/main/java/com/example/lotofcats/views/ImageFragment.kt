@@ -42,14 +42,13 @@ class ImageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val args: ImageFragmentArgs by navArgs()
-        val url = args.url
         val cat = args.cat
 
-        ViewCompat.setTransitionName(binding.imageView, url)
+        ViewCompat.setTransitionName(binding.imageView, cat.url)
 
         val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
         Glide.with(this)
-            .load(url)
+            .load(cat.url)
             .apply(requestOptions)
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
