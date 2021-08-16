@@ -26,5 +26,8 @@
         <argument
             android:name="url"
             app:argType="string" />
+        <argument
+            android:name="cat"
+            app:argType="com.example.lotofcats.model.Cat" />
     </fragment>
 </navigation>

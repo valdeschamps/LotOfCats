@@ -1,19 +1,24 @@
 package com.example.lotofcats.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import kotlin.String
 
+@Parcelize
 data class Cat(
     val id: String = "",
     val url: String = "",
     val categories: List<Categories> = listOf(),
     val breeds: List<Breeds> = listOf()
-)
+) : Parcelable
 
+@Parcelize
 data class Categories(
     val id: Int = 0,
     val name: String = ""
-)
+) : Parcelable
 
+@Parcelize
 data class Breeds(
     val id: String = "",
     val temperament: String = "",
@@ -43,4 +48,4 @@ data class Breeds(
     val social_needs: Int = 0,
     val stranger_friendly: Int = 0,
     val vocalisation: Int = 0
-)
+) : Parcelable

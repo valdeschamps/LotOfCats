@@ -43,6 +43,7 @@ class ImageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val args: ImageFragmentArgs by navArgs()
         val url = args.url
+        val cat = args.cat
 
         ViewCompat.setTransitionName(binding.imageView, url)
 
@@ -73,6 +74,13 @@ class ImageFragment : Fragment() {
                 }
             })
             .into(binding.imageView)
+
+        binding.textViewUrlValue.text = cat.url
+        val breeds = cat.breeds
+        if(breeds.isNotEmpty()) {
+            binding.textViewOriginValue.text = breeds.first().origin
+            binding.textViewWikiValue.text = breeds.first().wikipedia_url
+        }
     }
 
     override fun onDestroyView() {
