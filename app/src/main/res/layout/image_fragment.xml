@@ -34,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="url"
+                    android:text="@string/url_title"
                     android:textSize="18sp" />
 
                 <TextView
@@ -42,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
+                    android:text="@string/no_data"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -60,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="breed"
+                    android:text="@string/breed_title"
                     android:textSize="18sp" />
 
                 <TextView
@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
+                    android:text="@string/no_data"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -86,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="wiki"
+                    android:text="@string/wiki_title"
                     android:textSize="18sp" />
 
                 <TextView
@@ -94,7 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
+                    android:text="@string/no_data"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -112,7 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="origin"
+                    android:text="@string/origin_title"
                     android:textSize="18sp" />
 
                 <TextView
@@ -120,7 +120,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
+                    android:text="@string/no_data"
                     android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>

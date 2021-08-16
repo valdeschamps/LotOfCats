@@ -2,4 +2,9 @@
     <string name="app_name">LotOfCats</string>
     <string name="fragment_main_title">Cat list</string>
     <string name="fragment_image_title">Cat</string>
+    <string name="no_data">No data</string>
+    <string name="url_title">Image\'s url</string>
+    <string name="breed_title">Breed\'s name</string>
+    <string name="wiki_title">Wiki</string>
+    <string name="origin_title">Origin</string>
 </resources>
