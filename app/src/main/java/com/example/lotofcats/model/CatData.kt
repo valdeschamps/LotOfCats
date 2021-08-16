@@ -21,6 +21,7 @@ data class Categories(
 @Parcelize
 data class Breeds(
     val id: String = "",
+    val name: String = "",
     val temperament: String = "",
     val life_span: String = "",
     val alt_names: String = "",

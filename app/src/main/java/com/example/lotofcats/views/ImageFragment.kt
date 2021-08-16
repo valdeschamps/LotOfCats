@@ -80,6 +80,7 @@ class ImageFragment : Fragment() {
         if(breeds.isNotEmpty()) {
             binding.textViewOriginValue.text = breeds.first().origin
             binding.textViewWikiValue.text = breeds.first().wikipedia_url
+            binding.textViewBreedValue.text = breeds.first().name
         }
 
         registerForContextMenu(binding.textViewUrlValue)
