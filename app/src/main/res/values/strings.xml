@@ -7,4 +7,5 @@
     <string name="breed_title">Breed\'s name</string>
     <string name="wiki_title">Wiki</string>
     <string name="origin_title">Origin</string>
+    <string name="menu_copy">copy</string>
 </resources>
